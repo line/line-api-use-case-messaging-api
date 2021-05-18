@@ -1,0 +1,94 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  LINE-Messaging-API-Demo
+
+  SAM Template for LINE-Messaging-API-Demo
+
+Globals:
+  Function:
+    Timeout: 30
+    MemorySize: !FindInMap [EnvironmentMap, !Ref Environment, LambdaMemorySize]
+
+Parameters:
+  Environment:
+    Type: String
+    AllowedValues:
+      - dev
+      - prod
+    Default: dev
+
+Mappings:
+  EnvironmentMap:
+    dev:
+      LineChannelSecret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+      LineChannelAccessToken: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxFU=
+      RichMenuMessage: richmenu-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+      RichMenuFlex: richmenu-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+      RichMenuCarousel: richmenu-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+      LayerVersion: 1
+      LoggerLevel: INFO or DEBUG
+      LambdaMemorySize: 128
+    prod:
+      LineChannelSecret: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+      LineChannelAccessToken: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxFU=
+      RichMenuMessage: richmenu-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+      RichMenuFlex: richmenu-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+      RichMenuCarousel: richmenu-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+      LayerVersion: 1
+      LoggerLevel: INFO
+      LambdaMemorySize: 128
+
+Resources:
+  Replymessage:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: replymessage/
+      Handler: app.lambda_handler
+      Runtime: python3.8
+      Layers:
+        - !Join
+          - ":"
+          - - !Sub "arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:layer"
+            - !ImportValue MessagingAPILayerDev
+            - !FindInMap [EnvironmentMap, !Ref Environment, LayerVersion]
+      Environment:
+        Variables:
+          LINE_CHANNEL_SECRET: !FindInMap [EnvironmentMap, !Ref Environment, LineChannelSecret]
+          LINE_CHANNEL_ACCESS_TOKEN: !FindInMap [EnvironmentMap, !Ref Environment, LineChannelAccessToken]
+          RICH_MENU_MESSAGE: !FindInMap [EnvironmentMap, !Ref Environment, RichMenuMessage]
+          RICH_MENU_CAROUSEL: !FindInMap [EnvironmentMap, !Ref Environment, RichMenuCarousel]
+          RICH_MENU_FLEX: !FindInMap [EnvironmentMap, !Ref Environment, RichMenuFlex]
+          LOGGER_LEVEL: !FindInMap [EnvironmentMap, !Ref Environment, LoggerLevel]
+      Events:
+        ReplyMessage:
+          Type: Api
+          Properties:
+            Path: /replymessage
+            Method: post
+            RestApiId:
+              Ref: ReplyMessageApiGatewayApi
+  ReplyMessageApiGatewayApi:
+    Properties:
+      StageName: !Ref Environment
+      OpenApiVersion: 3.0.2
+    Type: AWS::Serverless::Api
+
+
+Outputs:
+  ReplyMessageApi:
+    Description: "API Gateway endpoint URL for Replymessage function"
+    Value: !Sub "https://${ReplyMessageApiGatewayApi}.execute-api.${AWS::Region}.amazonaws.com/${Environment}/replymessage/"
+  ReplymessageFunction:
+    Description: "Replymessage Lambda Function ARN"
+    Value: !GetAtt Replymessage.Arn
+  RichMenuMessage :
+    Description: "RichMenuID for Message"
+    Value: !FindInMap [EnvironmentMap, !Ref Environment, RichMenuMessage]
+  RichMenuCarousel :
+    Description: "RichMenuID for Carousel"
+    Value: !FindInMap [EnvironmentMap, !Ref Environment, RichMenuCarousel]
+  RichMenuFlex :
+    Description: "RichMenuID for Flex"
+    Value: !FindInMap [EnvironmentMap, !Ref Environment, RichMenuFlex]
+

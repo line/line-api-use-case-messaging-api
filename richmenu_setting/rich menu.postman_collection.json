@@ -1,0 +1,119 @@
+{
+	"variables": [],
+	"info": {
+		"name": "rich menu",
+		"_postman_id": "26618ead-ff9d-c06e-3d37-8b8e21777013",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1.send message menu",
+			"request": {
+				"url": "https://api.line.me/v2/bot/richmenu",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {channel access token}",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"size\": {\n        \"width\": 2500,\n        \"height\": 843\n    },\n    \"selected\": false,\n    \"name\": \"message\",\n    \"chatBarText\": \"メニュー\",\n    \"areas\": [\n        {\n            \"bounds\": {\n                \"x\": 11,\n                \"y\": 17,\n                \"width\": 820,\n                \"height\": 280\n            },\n            \"action\": {\n                \"type\": \"postback\",\n                \"data\": \"action=change_menu&action_type=message\",\n                \"label\": \"message\"\n            }\n        },\n        {\n            \"bounds\": {\n                \"x\": 860,\n                \"y\": 17,\n                \"width\": 820,\n                \"height\": 280\n            },\n            \"action\": {\n                \"type\": \"postback\",\n                \"label\": \"flex\",\n                \"data\": \"action=change_menu&action_type=flex\"\n            }\n        },\n        {\n            \"bounds\": {\n                \"x\": 1686,\n                \"y\": 17,\n                \"width\": 820,\n                \"height\": 280\n            },\n            \"action\": {\n                \"type\": \"postback\",\n                \"data\": \"action=change_menu&action_type=carousel\",\n                \"label\": \"carousel\"\n            }\n        },\n        {\n            \"bounds\": {\n                \"x\": 11,\n                \"y\": 390,\n                \"width\": 2453,\n                \"height\": 563\n            },\n            \"action\": {\n                \"type\": \"postback\",\n                \"data\": \"action=send_message&type=message\",\n                \"label\": \"message\"\n            }\n        }\n    ]\n}"
+				},
+				"description": "メッセージ送信メニューの作成"
+			},
+			"response": []
+		},
+		{
+			"name": "2.send flex-message menu",
+			"request": {
+				"url": "https://api.line.me/v2/bot/richmenu",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {channel access token}",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"size\": {\n        \"width\": 2500,\n        \"height\": 843\n    },\n    \"selected\": false,\n    \"name\": \"message\",\n    \"chatBarText\": \"メニュー\",\n    \"areas\": [\n        {\n            \"bounds\": {\n                \"x\": 11,\n                \"y\": 17,\n                \"width\": 820,\n                \"height\": 280\n            },\n            \"action\": {\n                \"type\": \"postback\",\n                \"data\": \"action=change_menu&action_type=message\",\n                \"label\": \"message\"\n            }\n        },\n        {\n            \"bounds\": {\n                \"x\": 860,\n                \"y\": 17,\n                \"width\": 820,\n                \"height\": 280\n            },\n            \"action\": {\n                \"type\": \"postback\",\n                \"label\": \"flex\",\n                \"data\": \"action=change_menu&action_type=flex\"\n            }\n        },\n        {\n            \"bounds\": {\n                \"x\": 1686,\n                \"y\": 17,\n                \"width\": 820,\n                \"height\": 280\n            },\n            \"action\": {\n                \"type\": \"postback\",\n                \"data\": \"action=change_menu&action_type=carousel\",\n                \"label\": \"carousel\"\n            }\n        },\n        {\n            \"bounds\": {\n                \"x\": 11,\n                \"y\": 390,\n                \"width\": 2453,\n                \"height\": 563\n            },\n            \"action\": {\n                \"type\": \"postback\",\n                \"data\": \"action=send_message&type=flex\",\n                \"label\": \"flex\"\n            }\n        }\n    ]\n}"
+				},
+				"description": "FLEXメッセージ送信メニューの作成"
+			},
+			"response": []
+		},
+		{
+			"name": "3.send carousel-message menu",
+			"request": {
+				"url": "https://api.line.me/v2/bot/richmenu",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {channel access token}",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"size\": {\n        \"width\": 2500,\n        \"height\": 843\n    },\n    \"selected\": false,\n    \"name\": \"message\",\n    \"chatBarText\": \"メニュー\",\n    \"areas\": [\n        {\n            \"bounds\": {\n                \"x\": 11,\n                \"y\": 17,\n                \"width\": 820,\n                \"height\": 280\n            },\n            \"action\": {\n                \"type\": \"postback\",\n                \"data\": \"action=change_menu&action_type=message\",\n                \"label\": \"message\"\n            }\n        },\n        {\n            \"bounds\": {\n                \"x\": 860,\n                \"y\": 17,\n                \"width\": 820,\n                \"height\": 280\n            },\n            \"action\": {\n                \"type\": \"postback\",\n                \"label\": \"flex\",\n                \"data\": \"action=change_menu&action_type=flex\"\n            }\n        },\n        {\n            \"bounds\": {\n                \"x\": 1686,\n                \"y\": 17,\n                \"width\": 820,\n                \"height\": 280\n            },\n            \"action\": {\n                \"type\": \"postback\",\n                \"data\": \"action=change_menu&action_type=carousel\",\n                \"label\": \"carousel\"\n            }\n        },\n        {\n            \"bounds\": {\n                \"x\": 11,\n                \"y\": 390,\n                \"width\": 2453,\n                \"height\": 563\n            },\n            \"action\": {\n                \"type\": \"postback\",\n                \"data\": \"action=send_message&type=carousel\",\n                \"label\": \"carousel\"\n            }\n        }\n    ]\n}"
+				},
+				"description": "Carouselメッセージ送信メニューの作成"
+			},
+			"response": []
+		},
+		{
+			"name": "4.link richmenu and image",
+			"request": {
+				"url": "https://api-data.line.me/v2/bot/richmenu/{1,2,3で返却されたrichmenuid}/content",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {channel access token}",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "image/png",
+						"description": ""
+					},
+					{
+						"key": "Expect",
+						"value": "",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "file",
+					"file": {
+						"src": ""
+					}
+				},
+				"description": "リッチメニューと画像を紐付ける：bodyのSelect Fileから使用する画像を選択してください"
+			},
+			"response": []
+		}
+	]
+}

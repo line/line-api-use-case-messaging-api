@@ -1,0 +1,7 @@
+version = 0.1
+[default]
+[default.deploy]
+[default.deploy.parameters]
+region = "ap-northeast-1"
+capabilities = "CAPABILITY_NAMED_IAM"
+parameter_overrides = "Environment=\"dev\""
