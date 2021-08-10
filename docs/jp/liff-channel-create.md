@@ -32,16 +32,16 @@ LINE Developers は本アプリで必要な LINE 公式アカウントの作成�
 1. LINE Developes にログインした状態で、以下のコンソールに遷移する  
    https://developers.line.biz/console/
 2. プロバイダー見出しの横にある作成ボタンを押下する
-   ![プロバイターの作成_1_作成部分を四角で囲んだ画像](images/line-provider-create-1.png)
+   ![プロバイターの作成_1_作成部分を四角で囲んだ画像](../images/jp/line-provider-create-1.png)
 3. 任意のプロバイダー名を入力し、作成を押下する
 4. プロバイダーが作成され、以下のような画面に遷移したことを確認する
-   ![プロバイターの作成_2](images/line-provider-create-2.png)
+   ![プロバイターの作成_2](../images/jp/line-provider-create-2.png)
 
 ## 4.チャネルの作成
 
 1. Messaging API 用のチャネルを作成
    1. 先ほど作成したプロバイダーの画面にて、Messaging API を押下する
-      ![チャネルの作成_Messaging APIの部分を資格で囲んだ画像](images/line-channel-create-1.png)
+      ![チャネルの作成_Messaging APIの部分を資格で囲んだ画像](../images/jp/line-channel-create-1.png)
    1. 以下の通り、項目を設定する
       1. チャネルの種類： 変更無し
       1. プロバイダー： 変更無し
@@ -57,10 +57,10 @@ LINE Developers は本アプリで必要な LINE 公式アカウントの作成�
    1. LINE 公式アカウント利用規約と LINE 公式アカウント API 利用規約に目を通して同意にチェックを入れる
    1. 作成を押下し、チャネルを作成する
    1. 以下画像のような作成したチャネルの画面が表示され、チャネルの作成が完了したことを確認する。
-      ![チャネルの作成_2](images/line-channel-create-2.png)  
+      ![チャネルの作成_2](../images/jp/line-channel-create-2.png)  
       ※チャネル基本設定のタブに表示されているチャネルシークレットを以降の手順にて使用するので、メモを取っておいてください。
    1. Messaging APIのタブに移動し、チャネルアクセストークン（長期）を発行して、メモを取っておく。※後の手順で利用します。
 
 [次の頁へ](richmenu-create.md)
 
-[目次へ戻る](../README.md)
+[目次へ戻る](../../README.md)

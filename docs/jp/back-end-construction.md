@@ -30,17 +30,17 @@ sam deploy --guided
     #SAM needs permission to be able to create roles to connect to the resources in your template Allow SAM CLI IAM role creation[Y/n]: Y
     Save arguments to samconfig.toml [Y/n]: Y
 
-    SAM configuration file [samconfig.toml]: 入力せずEnter 
+    SAM configuration file [samconfig.toml]: 入力せずEnter
     SAM configuration environment [default]: 入力せずEnter
-    
+
     Deploy this changeset? [y/N]: y
 ```
 
 - レイヤーバージョンをメモ  
-  デプロイ後、ターミナルの Outputs の項目に、レイヤー ARN とレイヤーバージョンが表示されるので、レイヤーバージョンをメモをしておく。 
+  デプロイ後、ターミナルの Outputs の項目に、レイヤー ARN とレイヤーバージョンが表示されるので、レイヤーバージョンをメモをしておく。
   レイヤーバージョンは末尾の数字の部分。  
   ※バージョンはデプロイするたびに更新されるので、初めてのデプロイの場合バージョン 1 となっているのが正しいです。
-  ![コマンドプロンプトのOutput部の画像](images/out-put-description.png)
+  ![コマンドプロンプトのOutput部の画像](../images/jp/out-put-description.png)
 
 - 【確認】AWS マネジメントコンソールで Lambda のコンソールを開き、左タブから「レイヤー」を選択し、今回デプロイしたレイヤーがあることを確認する。
 
@@ -77,7 +77,7 @@ sam deploy --guided
     #SAM needs permission to be able to create roles to connect to the resources in your template Allow SAM CLI IAM role creation[Y/n]: Y
     ××××× may not have authorization defined, Is this okay? [y/N]: y (全てyと入力)  
 
-    SAM configuration file [samconfig.toml]: 入力せずEnter 
+    SAM configuration file [samconfig.toml]: 入力せずEnter
     SAM configuration environment [default]: 入力せずEnter
 
     Save arguments to samconfig.toml [Y/n]: Y
@@ -86,7 +86,7 @@ sam deploy --guided
 
 - API Gateway URLのメモ  
 デプロイ成功時にOutPutにて表示されるAPI Gateway endpointのメモを取ってください。後の手順にて利用します。
-  
+
 ## エラー対応
 - デプロイ時、以下のようなエラーが出た場合、こちらの手順で解消してください。
   ```
@@ -112,4 +112,4 @@ sam deploy --guided
 
 [次の頁へ](validation.md)
 
-[目次へ戻る](../README.md)
+[目次へ戻る](../../README.md)
